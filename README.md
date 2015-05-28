@@ -28,7 +28,7 @@ angular.module('myApp', ['AirBopClient'])
 
 ## Usage
 
-This plugin has only one method: <code>$airbopClient.register(options)<code>.
+This plugin has only one method: <code>$airbopClient.register(options)</code>.
 
 <code>options</code> parameter is an object. The structure:
 
