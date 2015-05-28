@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "quotes": [1, "single"]
+  },
+  "globals": {
+    "angular": 1,
+    "sha256": 1
+  }
+}

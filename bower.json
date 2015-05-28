@@ -1,0 +1,35 @@
+{
+  "name": "cordova-airbop-client",
+  "version": "1.0.0",
+  "author": {
+    "name": "Peter Bakondy",
+    "homepage": "https://github.com/pbakondy"
+  },
+  "description": "AngularJS service for connecting to AirBop GCM Push Messaging server",
+  "main": "airbop-client.js",
+  "dependencies": {
+    "angular": "1.x",
+    "geraintluff/sha256": "1.x"
+  },
+  "keywords": [
+    "angularjs",
+    "airbop",
+    "client",
+    "gcm",
+    "cordova",
+    "ionic",
+    "ecosystem:cordova"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/pbakondy/cordova-airbop-client",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pbakondy/cordova-airbop-client.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}
