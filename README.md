@@ -50,6 +50,10 @@ You can get latitude and longitude by using [cordova-plugin-geolocation](https:/
 You can get get country and state from geolocation data using [reverse geocoding](https://developers.google.com/maps/documentation/geocoding/?csw=1#ReverseGeocoding).
 
 
+## Demo Application
+
+See https://github.com/pbakondy/gcm-demo-app
+
 
 ## License
 
