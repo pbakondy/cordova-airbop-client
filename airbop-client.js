@@ -71,6 +71,13 @@ angular.module('AirBopClient', [])
     }
 
 
+    /**
+     * Issue a POST request to the AirBop server.
+     *
+     * @param <Object> params Parameters to the query
+     * @param <String> url The URL to post to
+     * @return <Promise>
+     */
     function post(params, url) {
       var q = $q.defer();
 
