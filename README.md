@@ -14,7 +14,7 @@ In the main HTML page you have to place these references:
 
 ```html
 <script src="lib/cordova-airbop-client/airbop-client.min.js"></script>
-<script src="lib/sha256/sha256.min.js"></script>
+<script src="lib/tiny-sha256/sha256.min.js"></script>
 ```
 
 Then, include <code>cordova-airbop-client</code> as a dependency in your angular module:
