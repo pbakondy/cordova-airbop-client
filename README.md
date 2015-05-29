@@ -28,9 +28,13 @@ angular.module('myApp', ['AirBopClient'])
 
 ## Usage
 
-This plugin has only one method: <code>$airbopClient.register(options)</code>.
+This plugin has two methods: <code>$airbopClient.register(options)</code> and <code>$airbopClient.unregister(options)</code>.
 
-<code>options</code> parameter is an object. The structure:
+<code>options</code> parameter is an object.
+
+### Registering with AirBop
+
+Call <code>register()</code> with the following options:
 
 * <code>airbopAppKey</code> &lt;String&gt; [mandantory] - AIRBOP_APP_KEY from AirBop registration
 * <code>airbopAppSecret</code> &lt;String&gt; [mandantory] - APP_SECRET from AirBop registration
@@ -42,6 +46,15 @@ This plugin has only one method: <code>$airbopClient.register(options)</code>.
 * <code>latitude</code> &lt;String&gt; [optional]
 * <code>longitude</code> &lt;String&gt; [optional]
 
+### Unregistering from AirBop
+
+Call <code>unregister()</code> with the following options:
+
+* <code>airbopAppKey</code> &lt;String&gt; [mandantory] - AIRBOP_APP_KEY from AirBop registration
+* <code>airbopAppSecret</code> &lt;String&gt; [mandantory] - APP_SECRET from AirBop registration
+* <code>regid</code> &lt;String&gt; [mandantory] - this ID is coming from GCM server after registration
+
+### Additional info
 
 You can get country code by using [cordova-plugin-sim](https://github.com/pbakondy/cordova-plugin-sim) plugin.
 

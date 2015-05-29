@@ -9,7 +9,9 @@ angular.module('AirBopClient', [])
     'use strict';
 
     var METHOD = 'POST';
-    var URL = 'http://www.airbop.com/api/v1/register';
+    var SERVER_URL = 'http://www.airbop.com/api/v1/';
+    var REGISTER_URL = SERVER_URL + 'register';
+    var UNREGISTER_URL = SERVER_URL + 'unregister';
     var CONTENT_TYPE = 'application/json';
     var TIMEOUT = 60 * 1000; //ms
 
@@ -68,6 +70,44 @@ angular.module('AirBopClient', [])
       return sha256(input);
     }
 
+
+    function post(params, url) {
+      var q = $q.defer();
+
+      var ts = getCurrentTimestamp();
+
+      var signature = constructSignatureURI(METHOD, url, ts, JSON.stringify(params));
+      var signatureHash = computeHash(signature);
+
+      var headers = {};
+      headers[HEADER_APP] = AIRBOP_APP_KEY;
+      headers[HEADER_TIMESTAMP] = ts;
+      headers[HEADER_SIGNATURE] = signatureHash;
+      headers[HEADER_CONTENT_TYPE] = CONTENT_TYPE;
+
+      var config = {
+        data: params,
+        headers: headers,
+        method: METHOD,
+        params: params,
+        timeout: TIMEOUT,
+        url: url
+      };
+
+      $http(config).then(
+        function(response) {
+          if (response.status === 200) {
+            q.resolve('OK');
+          } else {
+            q.reject({ 'data': response.data, 'status': response.status, 'statusText': response.statusText });
+          }
+        },
+        q.reject
+      );
+
+      return q.promise;
+    }
+
     /**
      * Registers client to AirBop server
      *
@@ -104,8 +144,6 @@ angular.module('AirBopClient', [])
 
       var q = $q.defer();
 
-      var ts = getCurrentTimestamp();
-
       // only REGISTRATION_ID parameter is mandatory
       var params = {};
       params[REGISTRATION_ID] = options.regid;
@@ -130,40 +168,52 @@ angular.module('AirBopClient', [])
         params[LONGITUDE] = options.longitude;
       }
 
-      var signature = constructSignatureURI(METHOD, URL, ts, JSON.stringify(params));
-      var signatureHash = computeHash(signature);
+      post(params, REGISTER_URL).then(q.resolve, q.reject);
 
-      var headers = {};
-      headers[HEADER_APP] = AIRBOP_APP_KEY;
-      headers[HEADER_TIMESTAMP] = ts;
-      headers[HEADER_SIGNATURE] = signatureHash;
-      headers[HEADER_CONTENT_TYPE] = CONTENT_TYPE;
+      return q.promise;
+    }
 
-      var config = {
-        data: params,
-        headers: headers,
-        method: METHOD,
-        params: params,
-        timeout: TIMEOUT,
-        url: URL
-      };
+    /**
+     * Unregisters client to AirBop server
+     *
+     * @param <Object> options Options
+     * @return <Promise>
+     *
+     * Options
+     * - airbopAppKey <String> [mandantory]
+     * - airbopAppSecret <String> [mandantory]
+     * - regid <String> [mandantory]
+     *
+     */
+    function unregister(options) {
 
-      $http(config).then(
-        function(response) {
-          if (response.status === 200) {
-            q.resolve('OK');
-          } else {
-            q.reject({ 'data': response.data, 'status': response.status, 'statusText': response.statusText });
-          }
-        },
-        q.reject
-      );
+      // checking mandantory parameters
+      if (typeof options.airbopAppKey !== 'string') {
+        throw 'Invalid `airbopAppKey` option';
+      }
+      if (typeof options.airbopAppSecret !== 'string') {
+        throw 'Invalid `airbopAppSecret` option';
+      }
+      if (typeof options.regid !== 'string') {
+        throw 'Invalid `regid` option';
+      }
+
+      AIRBOP_APP_KEY = options.airbopAppKey;
+      AIRBOP_APP_SECRET = options.airbopAppSecret;
+
+      var q = $q.defer();
+
+      var params = {};
+      params[REGISTRATION_ID] = options.regid;
+
+      post(params, UNREGISTER_URL).then(q.resolve, q.reject);
 
       return q.promise;
     }
 
     return {
-      register: register
+      register: register,
+      unregister: unregister
     };
 
   }]);
