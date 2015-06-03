@@ -62,6 +62,23 @@ You can get latitude and longitude by using [cordova-plugin-geolocation](https:/
 
 You can get get country and state from geolocation data using [reverse geocoding](https://developers.google.com/maps/documentation/geocoding/?csw=1#ReverseGeocoding).
 
+## Content Security Policy
+
+If you use the latest Ionic version it will install [cordova-plugin-whitelist](https://github.com/apache/cordova-plugin-whitelist) plugin.
+It needs to whitelist the used external resources.
+
+To allow AirBop server communication add this line to the HTML header:
+
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' airbop.com">
+```
+
+To enable everything ( all requests, inline styles, and eval() ) use this version:
+
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+```
+
 
 ## Demo Application
 
