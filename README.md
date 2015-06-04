@@ -7,7 +7,7 @@ An AngularJS service for connecting to [AirBop](http://www.airbop.com/) GCM Push
 After creating a new Ionic project run this command:
 
 ```
-bower install cordova-airbop-client
+ionic add cordova-airbop-client
 ```
 
 In the main HTML page you have to place these references:
