@@ -1,6 +1,6 @@
 {
-  "name": "cordova-airbop-client",
-  "version": "1.1.0",
+  "name": "ionic-airbop-client",
+  "version": "1.2.0",
   "author": {
     "name": "Peter Bakondy",
     "homepage": "https://github.com/pbakondy"
@@ -21,10 +21,10 @@
     "ecosystem:cordova"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/pbakondy/cordova-airbop-client",
+  "homepage": "https://github.com/pbakondy/ionic-airbop-client",
   "repository": {
     "type": "git",
-    "url": "git://github.com/pbakondy/cordova-airbop-client.git"
+    "url": "git://github.com/pbakondy/ionic-airbop-client.git"
   },
   "ignore": [
     "**/.*",

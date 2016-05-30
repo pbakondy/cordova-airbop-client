@@ -1,4 +1,4 @@
-# cordova-airbop-client
+# Ionic AirBop Client
 
 An AngularJS service for connecting to [AirBop](http://www.airbop.com/) GCM Push Messaging server.
 
@@ -7,17 +7,17 @@ An AngularJS service for connecting to [AirBop](http://www.airbop.com/) GCM Push
 After creating a new Ionic project run this command:
 
 ```
-ionic add cordova-airbop-client
+ionic add ionic-airbop-client
 ```
 
 In the main HTML page you have to place these references:
 
 ```html
-<script src="lib/cordova-airbop-client/airbop-client.min.js"></script>
+<script src="lib/ionic-airbop-client/airbop-client.min.js"></script>
 <script src="lib/tiny-sha256/sha256.min.js"></script>
 ```
 
-Then, include <code>cordova-airbop-client</code> as a dependency in your angular module:
+Then, include `ionic-airbop-client` as a dependency in your angular module:
 
 ```js
 angular.module('myApp', ['AirBopClient'])
@@ -28,7 +28,7 @@ angular.module('myApp', ['AirBopClient'])
 
 ## Usage
 
-This plugin has two methods: <code>$airbopClient.register(options)</code> and <code>$airbopClient.unregister(options)</code>.
+This plugin has two methods: `$airbopClient.register(options)` and `$airbopClient.unregister(options)`.
 
 <code>options</code> parameter is an object.
 
@@ -87,4 +87,4 @@ See https://github.com/pbakondy/gcm-demo-app
 
 ## License
 
-cordova-airbop-client is licensed under the MIT Open Source license. For more information, see the LICENSE file in this repository.
+ionic-airbop-client is licensed under the MIT Open Source license. For more information, see the LICENSE file in this repository.
